@@ -8,8 +8,9 @@
   <title>Login Form</title>
 </head>
 <body>
+  <div class="title"><span>Login</span></div>
   <div class="wrapper">
-    <div class="title"><span>Login Form</span></div>
+    
     <form action="#">
       <div class="row">
         <h5>Username</h5>
@@ -19,17 +20,31 @@
         <h5>Password</h5>
         <input type="password" placeholder=" &#xF002; Placeholder" required style="font-family:Arial, FontAwesome">
       </div>
+      <div class="row">
+        <a href="#">Reset Password</a>
+      </div>
       <div class="row1">
         <h5>Environment</h5>
         <input type="text" placeholder=" &#xF002; Placeholder" required style="font-family:Arial, FontAwesome" disabled>
       </div><br><br><br>
+      <p>Or,</p>
     </form>
     <div class="wrapper1">
       <div class="row">
         <i class="fa fa-google fa-1x"></i>
-        <button>Sign in with Google</button>
+        <button class="btn">Sign in with Google</button>
       </div>
     </div><br>
+    <div class="wrapper1">
+      <div class="row">
+        <button class="btn2"><span class="fa fa-apple"></span> Continue with Apple</button>
+      </div>
+    </div><br>
+    <div class="wrapper1">
+      <div class="row">
+        <button class="btn3"><span class="fa fa-microsoft"></span> Sign in with Microsoft</button>
+      </div>
+    </div>
   </div>
 </body>
 </html>

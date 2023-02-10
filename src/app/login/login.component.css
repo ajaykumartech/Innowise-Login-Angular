@@ -12,11 +12,16 @@ body{
 .wrapper{
     width: 500px;
     background-color: #f9f9f9;
-    border-radius: 5px;
+    border-radius: 7px;
+    border: 1px solid #ebeaea;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
 }
-.wrapper .title{
-    line-height: 80px;
-    padding-left: 20px;
+.title{
+    line-height: 230px;
     font-size: 20px;
     font-weight: 600;
 }
@@ -54,13 +59,18 @@ h5{
     color: transparent;
     -webkit-text-fill-color: transparent;
   }
+  .wrapper1{
+    margin: auto;
+    display: flex;
+    justify-content: center;
+  }
   .wrapper1 .row i{
     position:absolute;
     width: 47px;
     height: 40px;
     font-size: 20px;
     background-color: white;
-    border: 1px solid blue;
+    border: 1px solid #4285F4;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -74,16 +84,46 @@ h5{
     background-color: #4285F4;
     border: 1px solid #4285F4;
   }
-  .wrapper1{
-    margin-left: 150px;
-  }
-  button{
+  
+  .btn{
     margin-left: 46px;
     height: 40px;
-    padding: 0px 10px 0px 10px;
+    padding: 0px 10px 0px 0px;
     background-color: #4285F4;
     color: white;
-    width: 180px;
-    border: 2px solid #4285F4;
+    border: 1px solid #4285F4;
+    font-size: 15px;
+    
   }
-  
+  a{
+    float: right;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+  }
+  p{
+    text-align: center;
+  }
+  span{
+    color: black;
+    padding: 0px 5px 0px 5px;
+    font-size: 20px;
+  }
+  .btn2{
+    background-color: white;
+    border-radius: 5px;
+    height: 40px;
+    border: 1px solid black;
+    font-size: 15px;
+    font-weight: bold;
+    width: 190px;
+  }
+  .btn3{
+    height: 40px;
+    font-size: 15px;
+    border: 1px solid #8C8C8C;
+    color: #5E5E5E;
+    margin-bottom: 25px;
+    width: 190px;
+    
+  }
+
