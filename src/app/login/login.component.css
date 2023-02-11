@@ -10,20 +10,26 @@ body{
     place-items: center;
 }
 .wrapper{
-    width: 500px;
+  max-width: 500px;
     background-color: #f9f9f9;
     border-radius: 7px;
-    border: 1px solid #ebeaea;
-    position: absolute;
-    top: 50%;
+    border: 1px solid #b8b8b8;
+    /* position: absolute;
+     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    
+    transform: translate(-50%, -50%); */ 
+  /* justify-content: center;
+  align-items: center;
+  
+  height: 50vh; */
+  
 }
 .title{
-    line-height: 230px;
     font-size: 20px;
     font-weight: 600;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 .wrapper form{
     padding: 30px 20px 25px 20px;
@@ -33,21 +39,22 @@ body{
     position: relative;
 }
 .wrapper form .row input{
-    width: 100%;
+    width: 400px;
     height: 40px;
     border-radius: 5px;
     background-color: rgb(255, 255, 255);
-    border: 1px solid #f1f0f0
-
+    border: 1px solid #ddd;
+    padding-left: 10px;
+  
     
 }
 .wrapper form .row1 input{
-    width: 100%;
+    width: 400px;
     height: 40px;
     border-radius: 5px;
     background-color: rgb(242, 239, 239);
-    border: 1px solid #f1f0f0;
-    
+    border: 1px solid #ddd;
+    padding-left: 10px;
 }
 h5{
     padding-bottom: 10px;
@@ -88,7 +95,7 @@ h5{
   .btn{
     margin-left: 46px;
     height: 40px;
-    padding: 0px 10px 0px 0px;
+    padding: 0px 10px 0px 10px;
     background-color: #4285F4;
     color: white;
     border: 1px solid #4285F4;
@@ -99,6 +106,7 @@ h5{
     float: right;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 15px;
+    color: #4E5BD0;
   }
   p{
     text-align: center;
@@ -115,7 +123,7 @@ h5{
     border: 1px solid black;
     font-size: 15px;
     font-weight: bold;
-    width: 190px;
+    width: 200px;
   }
   .btn3{
     height: 40px;
@@ -123,7 +131,29 @@ h5{
     border: 1px solid #8C8C8C;
     color: #5E5E5E;
     margin-bottom: 25px;
-    width: 190px;
-    
+    width: 200px;
   }
+  .fa-microsoft{
+    background: conic-gradient( #7FBA00 0deg 90deg, #FFB900 90deg 180deg, #00A4EF 180deg 270deg, #F25022 270deg 360deg ) no-repeat;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+  }
+  .main-div{
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .fa-times-circle{
+    color: #AAAAAA; 
+    display: inline-block;
+    position: absolute;
+    right: 12px;
+    margin-top: 12px;
+  }
+  
 
