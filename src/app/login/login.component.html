@@ -4,24 +4,24 @@
     <form [formGroup]="inputsForm" (ngSubmit)="save()" name="myForm">
       <div class="row form-group">
         <h5>Username</h5>
-        <input type="text" placeholder=" &#xF002; Placeholder" name="UserNameOrEmail" [(ngModel)]="inputData"
-          formControlName="UserNameOrEmail" (input)="onKeyUp($event)" required style="font-family:Arial, FontAwesome"
+        <input type="text" placeholder=" &#xF002; Placeholder" name="UserNameOrEmail" [(ngModel)]="inputData" 
+          formControlName="UserNameOrEmail" (keyup.enter)="onKeyUp($event)"  (mouseleave)="onKeyUp($event)" required style="font-family:Arial, FontAwesome"
           class="form-control">
 
-        <i class="fas fa-times-circle" *ngIf="inputData" (click)="clear()"></i>
+        <i class="fas fa-times-circle" *ngIf="inputData" (click)="clear()" ></i>
         <p class="validation"
           *ngIf="inputsForm.controls['UserNameOrEmail'].dirty && inputsForm.hasError('required', 'UserNameOrEmail')">
           *Username is required</p>
         <p class="validation">{{error}}</p>
-        <!-- <span class="validation" *ngIf="inputsForm.controls['username'].dirty && inputsForm.hasError('pattern', 'username')"><br>*First letter must be capital, maxlength 30 required</span> -->
-        <!-- <span class="validation" *ngIf="inputsForm.controls['username'].dirty && inputsForm.hasError('email', 'username')"><br>*Enter valid email id</span> -->
+        <!-- <p class="validation" *ngIf="inputsForm.controls['UserNameOrEmail'].dirty && inputsForm.hasError('pattern', 'UserNameOrEmail')">*Enter a valid Username or Email</p> -->
 
       </div>
       <div class="row">
         <h5>Password</h5>
-        <input type="Password" placeholder=" &#xF002; Placeholder" name="Password" formControlName="Password" required
+        <input [type]="changeType? 'Password':'text'" placeholder=" &#xF002; Placeholder" name="Password" formControlName="Password" required [(ngModel)]="inputdata"
           class="form-control" style="font-family:Arial, FontAwesome">
-        <!-- <i class="fas fa-times-circle"></i> -->
+        <span (click)= "viewpass()"><i *ngIf="inputdata" [ngClass]= "visible? 'fas fa-eye' : 'fas fa-eye-slash'" ></i></span>
+       
         <p class="validation"
           *ngIf="inputsForm.controls['Password'].dirty && inputsForm.hasError('required', 'Password')">*Password is
           required</p>
@@ -36,15 +36,14 @@
       </div>
       <div class="row1">
         <h5>Environment</h5>
-        <select class="environment" required formControlName="EnvironmentID" name="EnvironmentID">
+        <select class="environment" [ngModel]="inputenv" required formControlName="EnvironmentID" name="EnvironmentID" [style.background-color]='inputenv? "white":"rgb(242, 239, 239)"'>
           <option> </option>
-          <option type="text" *ngFor="let env of data" style="font-family:Arial, FontAwesome">
+          <option type="text"  *ngFor="let env of data" style="font-family:Arial, FontAwesome" >
             {{env.organizationEnvironmentName}}</option>
         </select>
       </div>
-
       <button mat-raised-button color="primary" class="mat-raised-button">Login</button>
-      <!-- [disabled]="!inputsForm.valid" -->
+      <!-- [disabled]="!inputenv" -->
 
       <br><br><br>
       <p>Or,</p>

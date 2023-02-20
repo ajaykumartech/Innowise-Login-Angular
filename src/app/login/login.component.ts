@@ -1,6 +1,8 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, ContentChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
+import { flatMap } from 'rxjs';
 import { UserenvironmentsService } from '../userenvironments.service';
 
 
@@ -29,19 +31,25 @@ export class LoginComponent {
     public error: any;
     envId: any;
     inputData!: string;
+    visible: boolean = true;
+    changeType: boolean = true;
+    inputdata!: any;
+    inputenv: boolean = false;
     data: USERENV[] = [];
-
+   
 
     inputsForm!:FormGroup;
 
-    constructor(private fb:FormBuilder, private userEnvironments: UserenvironmentsService){}
+    constructor(private fb:FormBuilder, private userEnvironments: UserenvironmentsService,  private route: Router){}
   
     ngOnInit(): void {
-  
+      
       this.inputsForm=this.fb.group({
         UserNameOrEmail: ['', [ Validators.required,
-                         Validators.pattern("^[A-Z][a-z]{0,30}$"),
-                        //  Validators.email
+                                Validators.minLength(2),
+                                Validators.maxLength(35)
+                                // Validators.pattern("^[a-z][A-Z]{0,30}$"),
+                                // Validators.email
                          ]],
         Password: ['', [ Validators.required,
                         //  Validators.pattern("^[A-Z][a-z][0-9][#?!@$%^&*-]{8}$"),
@@ -66,6 +74,14 @@ export class LoginComponent {
       return this.userEnvironments.authUser(this.inputsForm.value).subscribe(response => {
         this.data = response;
         console.log("form data in login component: ", this.data)
+        console.log("response:", response.token)
+        var tokenValue = this.userEnvironments.store(response.token)
+        if(tokenValue!=null){
+          this.route.navigate(['dashboard'])
+        }
+        else
+          console.log("details couldn't find")
+        // localStorage.setItem('Token', response.token)
       },
       (error: HttpErrorResponse)=>{
         this.error = (error.error.message);
@@ -74,23 +90,31 @@ export class LoginComponent {
      
     }
     onKeyUp(event:any){
+      this.inputenv = false;
       this.error="";
       console.log("Name or email: " +event.target.value)
-      
-      // this.inputsForm.value.username = new FormControl('', { validators: [Validators.required]})
       console.log("before calling api: " +this.inputsForm.value.UserNameOrEmail)
-      return this.userEnvironments.envData(this.inputsForm.value.UserNameOrEmail).subscribe(response => {
-        this.data=response;
-        console.log("login component: ", this.data) 
-      },
-      (error: HttpErrorResponse) => {
-        this.error = (error.error.message);
-        console.log("error message: ", this.error)
-      }); 
+      if(this.inputsForm.value.UserNameOrEmail!=this.inputData.length){
+        this.userEnvironments.envData(this.inputsForm.value.UserNameOrEmail).subscribe(response => {
+          this.data=response;
+          console.log("login component: ", this.data) 
+          this.inputenv = true;
+          return
+        },
+        (error: HttpErrorResponse) => {
+          this.error = (error.error.message);
+          console.log("error message: ", this.error)
+        }); 
+      }
     }
 
     clear(){
       this.inputData = '';
+    }
+    
+    viewpass(){
+      this.visible = !this.visible;
+      this.changeType = !this.changeType
     }
 
 }

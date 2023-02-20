@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http'
 import {Observable} from 'rxjs'
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -8,19 +9,19 @@ import {Observable} from 'rxjs'
 export class UserenvironmentsService {
   
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private route: Router) {
     
    }
 
    
-   ENVAPIURL = "https://api.insurance.rahulmitra.dev/master/getuserenvironments"
-   AUTHAPIURL = "https://api.insurance.rahulmitra.dev/master/authenticate" 
+   ENVAPIURL = "https://insurance-api01.suvamglobal.com/master/getuserenvironments"
+   AUTHAPIURL = "https://insurance-api01.suvamglobal.com/master/authenticate" 
    
 
 
 
    callService(val:string): Observable<any>{
-    return this.http.get("https://api.insurance.rahulmitra.dev/master/serverstatus") 
+    return this.http.get("https://insurance-api01.suvamglobal.com/master/serverstatus") 
    }
 
    envData(d:string): Observable<any> {
@@ -38,6 +39,23 @@ export class UserenvironmentsService {
     console.log("Authenticate user form data in service: ", user)
     return this.http.post(this.AUTHAPIURL, user)
    }
+
+   store(token:any){
+      localStorage.setItem('Token', token)
+      return token;
+   }
+
+  //  logout(){
+  //   localStorage.removeItem('Token')
+  //   this.route.navigate([''])
+  // }
+
+  isLoggedIn(){
+    if(localStorage.getItem('Token') != null){
+      return true;
+    }
+    return false;
+  }
 
 
 }
