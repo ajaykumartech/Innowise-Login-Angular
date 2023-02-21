@@ -4,13 +4,13 @@
     <form [formGroup]="inputsForm" (ngSubmit)="save()" name="myForm">
       <div class="row form-group">
         <h5>Username</h5>
+        <div class="input-wrapper">
         <input type="text" placeholder=" &#xF002; Placeholder" name="UserNameOrEmail" [(ngModel)]="inputData" 
           formControlName="UserNameOrEmail" (keyup.enter)="onKeyUp($event)"  (mouseleave)="onKeyUp($event)" required style="font-family:Arial, FontAwesome"
           class="form-control">
-
-        <i class="fas fa-times-circle" *ngIf="inputData" (click)="clear()" ></i>
-        <p class="validation"
-          *ngIf="inputsForm.controls['UserNameOrEmail'].dirty && inputsForm.hasError('required', 'UserNameOrEmail')">
+        <i  style="color: rgb(250, 5, 5);margin-right: 0.1vh;" class="fas fa-times-circle" *ngIf="inputData" (click)="clear()" ></i>
+        </div>
+        <p class="validation" *ngIf="inputsForm.controls['UserNameOrEmail'].dirty && inputsForm.hasError('required', 'UserNameOrEmail')">
           *Username is required</p>
         <p class="validation">{{error}}</p>
         <!-- <p class="validation" *ngIf="inputsForm.controls['UserNameOrEmail'].dirty && inputsForm.hasError('pattern', 'UserNameOrEmail')">*Enter a valid Username or Email</p> -->
@@ -18,10 +18,11 @@
       </div>
       <div class="row">
         <h5>Password</h5>
+        <div class="input-wrapper">
         <input [type]="changeType? 'Password':'text'" placeholder=" &#xF002; Placeholder" name="Password" formControlName="Password" required [(ngModel)]="inputdata"
           class="form-control" style="font-family:Arial, FontAwesome">
-        <span (click)= "viewpass()"><i *ngIf="inputdata" [ngClass]= "visible? 'fas fa-eye' : 'fas fa-eye-slash'" ></i></span>
-       
+      <i *ngIf="inputdata" [ngClass]= "visible? 'fas fa-eye' : 'fas fa-eye-slash'"  (click)= "viewpass()"></i>
+       </div>
         <p class="validation"
           *ngIf="inputsForm.controls['Password'].dirty && inputsForm.hasError('required', 'Password')">*Password is
           required</p>
