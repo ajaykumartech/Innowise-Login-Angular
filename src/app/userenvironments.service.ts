@@ -13,14 +13,14 @@ export class UserenvironmentsService {
    }
 
    
-   ENVAPIURL = "https://api.insurance.rahulmitra.dev/master/getuserenvironments"
-   AUTHAPIURL = "https://api.insurance.rahulmitra.dev/master/authenticate" 
+   ENVAPIURL = "https://insurance-api01.suvamglobal.com/master/getuserenvironments"
+   AUTHAPIURL = "https://insurance-api01.suvamglobal.com/master/authenticate" 
    
 
 
 
    callService(val:string): Observable<any>{
-    return this.http.get("https://api.insurance.rahulmitra.dev/master/serverstatus") 
+    return this.http.get("https://insurance-api01.suvamglobal.com/master/serverstatus") 
    }
 
    envData(d:string): Observable<any> {

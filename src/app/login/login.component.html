@@ -2,6 +2,7 @@
  
   <div class="wrapper">
     <form [formGroup]="inputsForm" (ngSubmit)="save()" name="myForm">
+      <div style="height: 25px;padding:5px;text-align: center;"> <p class="validations">{{error}}</p></div>
       <div class="title">LogIn</div>
       <div class="row form-group">
         <label>Username</label>
@@ -12,9 +13,12 @@
 
         <i class="fas fa-times-circle" *ngIf="inputData" (click)="clear()"></i>
         </div>
+       
+        <div style="height: 25px;padding:5px">
         <p class="validation" *ngIf="inputsForm.controls['UserNameOrEmail'].dirty && inputsForm.hasError('required', 'UserNameOrEmail')">
           *Username is required</p>
-        <p class="validation">{{error}}</p>
+       
+       </div>
         <!-- <span class="validation" *ngIf="inputsForm.controls['username'].dirty && inputsForm.hasError('pattern', 'username')"><br>*First letter must be capital, maxlength 30 required</span> -->
         <!-- <span class="validation" *ngIf="inputsForm.controls['username'].dirty && inputsForm.hasError('email', 'username')"><br>*Enter valid email id</span> -->
 
@@ -24,12 +28,14 @@
         <input type="Password" placeholder=" &#xF002; Placeholder" name="Password" formControlName="Password" required
           class="form-control" style="font-family:Arial, FontAwesome">
         <!-- <i class="fas fa-times-circle"></i> -->
+        <div style="height: 25px;padding:5px">
         <p class="validation"
           *ngIf="inputsForm.controls['Password'].dirty && inputsForm.hasError('required', 'Password')">*Password is
           required</p>
         <p class="validation"
           *ngIf="inputsForm.controls['Password'].dirty && inputsForm.hasError('minlength', 'Password')">*Minimum 6
-          characters required </p>
+          characters required </p> 
+        </div>
 
       </div>
 
